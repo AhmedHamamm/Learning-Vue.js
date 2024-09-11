@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue js Challenge #1</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body{
+          background: #eee;
+          max-width: 960px;
+          margin: 20px auto;
+        }
+        p, h3, ul{
+          margin: 0;
+          padding: 0;
+        }
+        li{
+          list-style-type: none;
+          background: #fff;
+          margin: 20px auto;
+          padding: 10px 20px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        li.fav{
+          background: #ff9ed2;
+          color: white;
+        }
+        button{
+          background: #ff9ed2;
+          color: white;
+          border: none;
+          padding: 1rem 2rem;
+          border-radius: 1rem;
+          cursor: pointer;
+          display: block;
+          margin: 0 auto;
+        }
+        img{
+          width: 150px;
+          height: 150px;
+          object-fit: cover;
+        }
+        .no-books{
+        margin: 40px 0; 
+          text-align: center;
+          font-size: 1.5rem;
+          color: #666;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="app">
+        <div v-if="showBooks">
+            <ul>
+                <li v-for="book in books" :class="{ fav: book.isFav }" @click="toggleFav(book)">
+                    <img :src="book.image" alt="{{ book.title }}" />
+                    <h3>{{ book.title }}</h3>
+                    <p>{{ book.author }}</p>
+                </ul>
+            </li>
+        </div>
+        <div v-else>
+            <p class="no-books">Click the button below to show books</p>
+        </div>
+      <button @click="toggleShowBooks">
+        <!-- Toggle Books -->
+        <span v-if="showBooks">hide books</span>
+        <span v-else>show books</span>
+      </button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
