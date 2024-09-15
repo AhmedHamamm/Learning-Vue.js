@@ -3,7 +3,7 @@
   <h1>{{ title }}</h1>
 
   <!-- First Modal -->
-  <div v-if="showModal">
+  <Teleport to="#modals" v-if="showModal">
     <Modal :theme="theme" @close="toggleModal">
       <template #header>
         <h1>{{ header }}</h1>
@@ -16,10 +16,10 @@
         <a href="#">Sign In</a>
       </template>
     </Modal>
-  </div>
+  </Teleport>
 
   <!-- Second Modal -->
-  <div v-if="showModalTwo">
+  <Teleport to="#modals" v-if="showModalTwo">
     <Modal :theme="theme" @close="toggleModalTwo">
       <template #header-two>
         <h1>Modal Two</h1>
@@ -32,7 +32,7 @@
         <a href="#">Sign In</a>
       </template>
     </Modal>
-  </div>
+  </Teleport>
 
   <!-- Buttons -->
   <button class="open-modal" @click.alt="toggleModal">Open Modal</button>
@@ -72,7 +72,8 @@ export default {
 </script>
 
 <style>
-#app {
+#app,
+#modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
